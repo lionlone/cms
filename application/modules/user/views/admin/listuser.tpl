@@ -1,3 +1,4 @@
+<section id="content">
    <div class="panel">
         <div class="panel-heading"> 
             <ul class="tabs nav panel-tabs-border panel-tabs panel-tabs-left">

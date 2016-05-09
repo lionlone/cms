@@ -10,25 +10,25 @@
       $this->listuser();
     }
 
-    public function listuser(){
+    public function ListUser(){
       $data['title'] = "Danh Sách Tài khoản";
       $data['main_module'] = "user/listuser";
       $data['data_modules'] = array();
       $this->load->view('main.layout.php', $data);
     }
-
-    public function admin_group(){
+    
+    public function AdminGroups($method= ""){
       $data['title'] = "Danh Sách Tài khoản";
-      $data['main_module'] = "user/admin_group";
-      //$data['data_modules'] = array();
-      $this->load->view('main.layout.php',$data);
+      $data['main_module'] = 'user/admin_groups'.$method;
+      $data['data_modules'] = array();
+      $this->load->view('main.layout.php', $data);
     }
 
-    public function listadmin(){
+    public function ListAdmin(){
       $data['title'] = "Danh Sách Tài khoản";
       $data['main_module'] = "user/listadmin";
-      $data['data_modules'] = array('email' => "nguyentrongtuan.st@gmail.com");
-      $this->load->view('main.layout.php',$data);
+      $data['data_modules'] = array();
+      $this->load->view('main.layout.php', $data);
     }
 
     /*public function loadviews($data = array()){

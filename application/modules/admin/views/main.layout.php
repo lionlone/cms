@@ -22,16 +22,16 @@
 		       <?php $this->load->view('admin/layout/topbar.tpl'); ?>
 		    </header>
 
-		    <section id="content">
+		    
 		        <?php
-			        if (isset($data_modules)) {
+			        if (isset($main_module)) {
 				    	echo Modules::run("$main_module", $data_modules);
 				    }
 				    else{
 						$this->load->view('admin/layout/content.home.tpl');
 				    }
 		        ?>
-		    </section>
+		    
 	    </section>
         <!-- End: Content-Wrapper -->
     </div>

@@ -1,3 +1,14 @@
+<section id="content">
+<!-- Common -->
+<header id="topbar" class="affix">
+        <div class="topbar-right">
+                <a class="btn btn-success fw600 pull-right mr10 br3 pv5" href="http://demothu.web5s.com.vn/admin/admin_group/add.html">
+                        <i class="fa fa-plus mr5"></i> Thêm mới                </a>
+        </div>
+</header>
+
+<!-- Message -->
+
 
 <!-- Widget verify action -->
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="box_verify_action">
@@ -34,29 +45,32 @@
                     <tr class="info">
                         <th class="w100">Thứ tự</th>
                         <th class="footable-first-column text-left" data-toggle="true">Tên</th>
+                        <th class="footable-first-column text-left" data-toggle="true">Quyền hạn</th>
                         <th class="w150">Hành động</th>
                    </tr>
                 </thead>
 
                 <tbody>
-                                    <tr>
-                        <td class="text-center">0</td>
+                    <?php foreach ($admin_groups as $key => $value): ?>
+                        <tr>
+                            <td class="text-center"><?= $value['group_id']; ?></td>
 
-                        <td>ban quan tri</td>
+                            <td><?= $value['groups_name']; ?></td>
+                            <td><?= $value['groups_position']; ?></td>
+                            <td class="text-center">
+                                <a href="<?= $main_module; ?>" title="Chỉnh sửa" 
+                                   class="btn btn-xs btn-warning btn-edit br3"><i class="fa fa-pencil"></i></a>
 
-                        <td class="text-center">
-                            <a href="http://demothu.web5s.com.vn/admin/admin_group/action/edit/14.html" title="Chỉnh sửa" 
-                               class="btn btn-xs btn-warning btn-edit br3"><i class="fa fa-pencil"></i></a>
-
-                            <a href="javascript:void(0)" _url="http://demothu.web5s.com.vn/admin/admin_group/action/del/14.html" title="Xóa" 
-                               class="btn btn-xs btn-danger btn-delete br3 verify_action" 
-                                notice="Bạn có chắc chắn muốn xóa nhóm quản trị:<br><b>ban quan tri</b>"
-                            >
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </td>
-                    </tr>
-                                </tbody>
+                                <a href="javascript:void(0)" _url="" title="Xóa" 
+                                   class="btn btn-xs btn-danger btn-delete br3 verify_action" 
+                                    notice="Bạn có chắc chắn muốn xóa nhóm quản trị:<br><b>ban quan tri</b>"
+                                >
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
             </table>
         </div>
     </div>
@@ -68,4 +82,3 @@
                         <div class="modal_click_content"></div>
                     </div>
                 </div>
-
