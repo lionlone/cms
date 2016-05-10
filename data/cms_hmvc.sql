@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 09, 2016 at 02:43 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- Client :  127.0.0.1
+-- Généré le :  Mar 10 Mai 2016 à 21:29
+-- Version du serveur :  10.1.10-MariaDB
+-- Version de PHP :  7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,35 +17,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cms_hmvc`
+-- Base de données :  `cms_hmvc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_groups_users`
+-- Structure de la table `cms_groups_users`
 --
 
 CREATE TABLE `cms_groups_users` (
   `group_id` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `userid` mediumint(8) UNSIGNED NOT NULL DEFAULT '0',
-  `is_leader` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `approved` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `data` text COLLATE utf8_unicode_ci NOT NULL
+  `groups_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `groups_position` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `cms_groups_users`
+-- Contenu de la table `cms_groups_users`
 --
 
-INSERT INTO `cms_groups_users` (`group_id`, `userid`, `is_leader`, `approved`, `data`) VALUES
-(1, 1, 1, 1, '0'),
-(3, 2, 0, 1, '0');
+INSERT INTO `cms_groups_users` (`group_id`, `groups_name`, `groups_position`) VALUES
+(1, 'Administrator', 'Quản trị viên tối cao'),
+(2, 'Admin', 'Điều hành chung');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_users`
+-- Structure de la table `cms_users`
 --
 
 CREATE TABLE `cms_users` (
@@ -60,7 +58,6 @@ CREATE TABLE `cms_users` (
   `gender` char(1) COLLATE utf8_unicode_ci DEFAULT '',
   `photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `birthday` int(11) NOT NULL,
-  `sig` text COLLATE utf8_unicode_ci,
   `regdate` int(11) NOT NULL DEFAULT '0',
   `question` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `answer` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -80,17 +77,17 @@ CREATE TABLE `cms_users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `cms_users`
+-- Contenu de la table `cms_users`
 --
 
-INSERT INTO `cms_users` (`userid`, `group_id`, `username`, `md5username`, `password`, `email`, `first_name`, `last_name`, `gender`, `photo`, `birthday`, `sig`, `regdate`, `question`, `answer`, `passlostkey`, `view_mail`, `remember`, `in_groups`, `active`, `checknum`, `last_login`, `last_ip`, `last_agent`, `last_openid`, `idsite`, `safemode`, `safekey`) VALUES
-(1, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '{SSHA}at4WDkiDrwMSv6mEI4nfHHlILNdPY3J0', 'nguyentrongtuan.st@gmail.com', 'Tuấn', 'Nguyễn Trọng', '', '', 0, '', 1462373793, 'cau hoi bi mat', 'tra loi', '', 0, 1, '1', 1, '577fe04a65809f30a8542bce3d3562fb', 1462586134, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/55.2.116 Chrome/49.2.2623.116 Safari/537.36', '', 0, 0, ''),
-(2, 4, 'administrator', '200ceb26807d6bf99fd6f4f0d1ca54d4', '{SSHA}9wDZonJCN5GxFKPLTLe2mASteJBTUUVp', 'botxabong009@gmail.com', 'A', 'Nguyễn Trọng', '', '', 0, NULL, 1462586024, 'cau hoi bao mat', 'tra loi cau hoi', '', 0, 1, '', 1, '57640ce66016a45eb26368e7a3501513', 1462586325, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/55.2.116 Chrome/49.2.2623.116 Safari/537.36', '', 0, 0, '');
+INSERT INTO `cms_users` (`userid`, `group_id`, `username`, `md5username`, `password`, `email`, `first_name`, `last_name`, `gender`, `photo`, `birthday`, `regdate`, `question`, `answer`, `passlostkey`, `view_mail`, `remember`, `in_groups`, `active`, `checknum`, `last_login`, `last_ip`, `last_agent`, `last_openid`, `idsite`, `safemode`, `safekey`) VALUES
+(2, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '{SSHA}at4WDkiDrwMSv6mEI4nfHHlILNdPY3J0', 'nguyentrongtuan.st@gmail.com', 'Tuấn', 'Nguyễn Trọng', '', '', 0, 1462373793, 'cau hoi bi mat', 'tra loi', '', 0, 1, '1', 1, '577fe04a65809f30a8542bce3d3562fb', 1462586134, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/55.2.116 Chrome/49.2.2623.116 Safari/537.36', '', 0, 0, ''),
+(1, 1, 'administrator', '200ceb26807d6bf99fd6f4f0d1ca54d4', '{SSHA}9wDZonJCN5GxFKPLTLe2mASteJBTUUVp', 'botxabong009@gmail.com', 'A', 'Nguyễn Trọng', '', '', 0, 1462586024, 'cau hoi bao mat', 'tra loi cau hoi', '', 0, 1, '', 1, '57640ce66016a45eb26368e7a3501513', 1462586325, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/55.2.116 Chrome/49.2.2623.116 Safari/537.36', '', 0, 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_users_openid`
+-- Structure de la table `cms_users_openid`
 --
 
 CREATE TABLE `cms_users_openid` (
@@ -103,7 +100,7 @@ CREATE TABLE `cms_users_openid` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_users_question`
+-- Structure de la table `cms_users_question`
 --
 
 CREATE TABLE `cms_users_question` (
@@ -116,7 +113,7 @@ CREATE TABLE `cms_users_question` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `cms_users_question`
+-- Contenu de la table `cms_users_question`
 --
 
 INSERT INTO `cms_users_question` (`qid`, `title`, `lang`, `weight`, `add_time`, `edit_time`) VALUES
@@ -138,17 +135,17 @@ INSERT INTO `cms_users_question` (`qid`, `title`, `lang`, `weight`, `add_time`, 
 (16, 'whe-re did you spend your honeymoon?', 'en', 9, 1274841183, 1274841183);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `cms_groups_users`
+-- Index pour la table `cms_groups_users`
 --
 ALTER TABLE `cms_groups_users`
-  ADD PRIMARY KEY (`group_id`,`userid`);
+  ADD PRIMARY KEY (`group_id`);
 
 --
--- Indexes for table `cms_users`
+-- Index pour la table `cms_users`
 --
 ALTER TABLE `cms_users`
   ADD PRIMARY KEY (`userid`),
@@ -158,7 +155,7 @@ ALTER TABLE `cms_users`
   ADD KEY `idsite` (`idsite`);
 
 --
--- Indexes for table `cms_users_openid`
+-- Index pour la table `cms_users_openid`
 --
 ALTER TABLE `cms_users_openid`
   ADD PRIMARY KEY (`opid`),
@@ -166,23 +163,23 @@ ALTER TABLE `cms_users_openid`
   ADD KEY `email` (`email`);
 
 --
--- Indexes for table `cms_users_question`
+-- Index pour la table `cms_users_question`
 --
 ALTER TABLE `cms_users_question`
   ADD PRIMARY KEY (`qid`),
   ADD UNIQUE KEY `title` (`title`,`lang`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `cms_users`
+-- AUTO_INCREMENT pour la table `cms_users`
 --
 ALTER TABLE `cms_users`
-  MODIFY `userid` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userid` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `cms_users_question`
+-- AUTO_INCREMENT pour la table `cms_users_question`
 --
 ALTER TABLE `cms_users_question`
   MODIFY `qid` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
